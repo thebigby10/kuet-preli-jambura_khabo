@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "recipe_managerapp",
     "ingredient_managerapp",
+    "chatbot_manager",
 ]
 
 MIDDLEWARE = [

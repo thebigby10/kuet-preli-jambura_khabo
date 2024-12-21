@@ -7,6 +7,7 @@ from .serializer import IngredientSerializer, AvailableIngredientSerializer
 from .models import ingredient
 from rest_framework import status
 
+import json
 
 # Create your views here.
 class IngredientView(APIView):
@@ -68,6 +69,9 @@ class saved_ingredient_view(APIView):
             return Response({"message": "ingredient not found"}, status = status.HTTP_404_NOT_FOUND)
 
     def post(self, request):
+        data = json.loads(request.body)
+        ingredient_id = data["ingredient_id"]
+        quantity = data["quantity"]
         try:
             serializer = AvailableIngredientSerializer(data = request.data)
             if serializer.is_valid():
